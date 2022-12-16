@@ -1,0 +1,140 @@
+/* Esta es la hoja de estilos*/
+
+/* Importamos un font de google*/
+/* open sans*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+
+/*CSS custom properties: son variables en CSS. Esto se hace con */
+/*
+Sintaxis para definición de variables
+:root{
+    --variable-entrada1:;
+    -variable-entrada1:;
+}
+*/
+
+
+/*Definición de variables dentro de un css*/
+:root{
+    --success-color: #2ecc71;
+    --error-color:#e74c3c;
+}
+
+/*El instructor dice que va a ir en todos los proyectos para que no se afecte por algún padding*/
+*{
+    box-sizing:border-box;
+}
+
+
+body{
+    background-color: azure;
+    font-family: "Open Sans", sans-serif;
+    display:flex; /*Creo que permite que el align y justify trabajen para centrar todo*/
+    min-height: 100vh; /*vh : viewport high unit: define que el body tenga 100 x 100 como unidades de medida*/
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+/*aquí se le da estilo al div que tiene la clase container*/
+.container {
+    background-color: darkturquoise;
+    border-radius: 10px; /*bordea las esquinas*/
+    box-shadow:0 2px 10px rgba(215, 99, 21, 0.496); /*propiedades de la sombra: tamaño y color*/
+    width: 500px; /* El ancho del contenedor */
+}
+
+/*Ahora aquí se le da formato al formulario que se encuentra dentro del div de clase "container"*/
+.form{
+    padding: 30px 40px; /*Concentra los elementos dentro de div que lo contenga, vertical y horizontal*/
+
+}
+
+h2 {
+    text-align: center; /*centra el h2 dentro del formulario*/
+    margin: 0 0 20px; /*Establece espacios entre el h2 y los demás elementos*/
+
+}
+
+/*En este caso los los div de clase formcontrol cobijan los inputs, los labels y los small tags del formulario*/
+
+.form-control {
+    margin-bottom: 10px; /*Espacio entre el div de clase "form-control" y los demás elementos*/
+    padding-bottom: 20px;
+    position: relative; /*Elemento padre, esto está asociado al small label que será "absolute" para que se ubique debajo*/
+    
+}
+
+/*Ahora le damos estilo a los labels que hacen parte de la clase form-control*/
+
+.form-control label{
+    color:black;
+    display: block; /*Hace que se apile el siguiente elementos después del label*/
+    margin-bottom: 5px;
+}
+
+.form-control input{
+    border: 2px solid #f0f0f0; /*Establece un borde a los inputs*/
+    border-radius: 4px; /*Redondea las esquinas del input*/
+    display: block;
+    width: 100%; /*Toma todo el ancho del contenedor*/
+    padding: 10px; /*ayuda a definir el tamaño del input*/
+    font-size: 14px; /*Da el tamaño de letra del placeholder*/
+}
+
+
+/*Nos deshacemos de la linea de marca por defecto que trae el input en el focus state*/
+/*los elementos tienen un focus state*/
+/*La propiedad que deseams quitar es el outline*/
+
+.form-control input:focus{
+    outline: 0;
+    border-color:#777; /*Define que color se va a mostrar cuando alquien hace focus en el input*/
+    
+}
+
+/*El input tendra distintos estados: cuando hay un error y cuando hay un exito*/
+
+/*Si el form control tiene una clase denominada success en el input*/
+.form-control.success input {
+    border-color:var(--success-color); /*OJO definición de variable al inicio, se llama con var()*/
+}
+
+/*Si el form control tiene una clase denominada error en el input*/
+.form-control.error input {
+    border-color:var(--error-color);/*OJO definición de variable al inicio, se llama con var()*/
+}
+
+/*para el small tag que tiene los mensajes de error definimos propiedades*/
+
+.form-control small{
+    color:var(--error-color);
+    position: absolute; /*reorganizo un poco las dimenciones*/
+    bottom: 0;
+    left: 0;
+    visibility: hidden; /*Por defecto los mensajes de error deben ir ocultos*/
+
+}
+
+/*El JS posteriormente controlará el small para que vuelva a ser visible si hay un error*/
+/*Se le asigna una clase "error" desde el css que se creará con JS*/
+
+.form-control.error small{
+    visibility: visible;
+
+}
+
+.form button{
+    cursor:pointer; /*Pone la manito cuando se pone el mouse encima del boton*/
+    background-color: white;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    color: black;
+    display:block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
